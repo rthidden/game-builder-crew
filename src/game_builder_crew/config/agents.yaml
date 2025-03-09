@@ -10,6 +10,7 @@ senior_engineer_agent:
   verbose: True
   tools:
     - SerperDevTool
+  llm: gpt-4o mini
 
 qa_engineer_agent:
   role: >
