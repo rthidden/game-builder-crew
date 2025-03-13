@@ -1,8 +1,8 @@
 """This file contains the crew definition for the GameBuilder crew"""
 from typing import List
-from crewai import Agent, Crew, Process, Task
-from crewai.project import CrewBase, agent, crew, task
-from crewai_tools import SerperDevTool
+from crewai import Agent, Crew, Process, Task, LLM
+from crewai.project import CrewBase, agent, crew, task, tool, llm
+from crewai_tools import SerperDevTool, BaseTool
 
 @CrewBase
 class GameBuilderCrew:
@@ -48,6 +48,19 @@ class GameBuilderCrew:
         return Task(
             config=self.tasks_config['evaluate_task'],
             agent=self.chief_qa_engineer_agent()
+        )
+
+    @tool
+    def serper_tool(self) -> BaseTool:
+        return SerperDevTool()
+    
+    @llm
+    def mini_llm(self) -> LLM:
+        return LLM(
+            model='openai/gpt-4o',
+            temperature=0.7,
+            timeout=90,
+            max_tokens=8192,
         )
 
     @crew

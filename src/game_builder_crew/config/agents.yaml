@@ -9,8 +9,8 @@ senior_engineer_agent:
   allow_delegation: False
   verbose: True
   tools:
-    - SerperDevTool
-  llm: gpt-4o mini
+    - serper_tool
+  llm: mini_llm
 
 qa_engineer_agent:
   role: >
@@ -27,7 +27,7 @@ qa_engineer_agent:
   allow_delegation: False
   verbose: True
   tools:
-    - SerperDevTool
+    - serper_tool
 
 chief_qa_engineer_agent:
   role: >
@@ -40,5 +40,5 @@ chief_qa_engineer_agent:
   allow_delegation: True
   verbose: True
   tools:
-    - SerperDevTool
+    - serper_tool
 
